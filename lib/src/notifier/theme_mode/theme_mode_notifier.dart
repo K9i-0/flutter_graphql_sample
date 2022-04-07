@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/src/repository/settings_repository.dart';
+import 'package:flutter_graphql_sample/src/repository/settings_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final themeModeProvider =

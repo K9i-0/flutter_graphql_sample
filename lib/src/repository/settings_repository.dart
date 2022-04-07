@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/src/local/shared_preferences_provider.dart';
-import 'package:flutter_template/src/resource/key_resource.dart';
+import 'package:flutter_graphql_sample/src/local/shared_preferences_provider.dart';
+import 'package:flutter_graphql_sample/src/resource/key_resource.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,4 +1,4 @@
-# Flutter Template
+# Flutter Graphql Sample
 
 Flutterアプリを作るときに使えるテンプレートリポジトリです。
 
@@ -22,11 +22,11 @@ settings.jsonにasdf前提の設定があります。
    1. grinderでよく使うコマンドを実行できるようになっています。
    2. [導入方法](https://zenn.dev/k9i/articles/bcfa83b08e56d6)
 3. エディタでアプリID等を置換します。
-   1. 「com.k9i.flutterTemplate」で検索して、iOSのbundle identifierを置換します。
-   2. 「com.k9i.flutter_template」で検索して、Androidのpackage名を置換します。
+   1. 「com.k9i.flutterGraphqlSample」で検索して、iOSのbundle identifierを置換します。
+   2. 「com.k9i.flutter_graphql_sample」で検索して、Androidのpackage名を置換します。
       1. Androidのpackage名
-   3. 「flutter_template」を検索して、パッケージ名置換します。
-   4. 「Flutter Template」を検索して、アプリ名を置換します。
+   3. 「flutter_graphql_sample」を検索して、パッケージ名置換します。
+   4. 「Flutter Graphql Sample」を検索して、アプリ名を置換します。
 4. アプリアイコンを置き換えます。
    1. assets/imagesディレクトリにあるapp_icon_{Flavor}.pngを使いたい画像に置き換えます。
    2. dev、stg、prodの3つのFlavorに対応しています。[この記事。](https://zenn.dev/riscait/articles/separating-environments-in-flutter)の方法を使っています

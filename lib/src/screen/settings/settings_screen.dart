@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/src/extension/extension.dart';
-import 'package:flutter_template/src/notifier/theme_mode/theme_mode_notifier.dart';
+import 'package:flutter_graphql_sample/src/extension/extension.dart';
+import 'package:flutter_graphql_sample/src/notifier/theme_mode/theme_mode_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 part 'settings_screen_body.dart';

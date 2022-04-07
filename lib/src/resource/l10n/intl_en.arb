@@ -1,6 +1,6 @@
 {
     "@@locale": "en",
-    "appTitle": "Flutter Template",
+    "appTitle": "Flutter Graphql Sample",
     "homeScreenDrawerHeaderLabelOSSLicense": "OSS License",
     "homeScreenDrawerHeaderLabelSettings": "Settings",
     "homeScreenDrawerHeaderTitle": "Drawer",

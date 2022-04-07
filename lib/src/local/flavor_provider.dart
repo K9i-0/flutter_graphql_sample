@@ -1,4 +1,4 @@
-import 'package:flutter_template/src/resource/assets.gen.dart';
+import 'package:flutter_graphql_sample/src/resource/assets.gen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final flavorProvider = Provider<Flavor>(

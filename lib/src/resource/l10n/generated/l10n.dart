@@ -50,10 +50,10 @@ class L10n {
     return Localizations.of<L10n>(context, L10n);
   }
 
-  /// `Flutter Template`
+  /// `Flutter Graphql Sample`
   String get appTitle {
     return Intl.message(
-      'Flutter Template',
+      'Flutter Graphql Sample',
       name: 'appTitle',
       desc: '',
       args: [],
