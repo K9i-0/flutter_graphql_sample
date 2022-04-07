@@ -9,3 +9,4 @@ analyzer:
   errors:
     todo: ignore
     depend_on_referenced_packages: ignore
+    sort_pub_dependencies: ignore
