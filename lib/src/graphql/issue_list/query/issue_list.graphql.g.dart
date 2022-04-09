@@ -63,6 +63,8 @@ QueryIssueList$repository$issues _$QueryIssueList$repository$issuesFromJson(
               : QueryIssueList$repository$issues$edges.fromJson(
                   e as Map<String, dynamic>))
           .toList(),
+      pageInfo: QueryIssueList$repository$issues$pageInfo.fromJson(
+          json['pageInfo'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
 
@@ -70,6 +72,7 @@ Map<String, dynamic> _$QueryIssueList$repository$issuesToJson(
         QueryIssueList$repository$issues instance) =>
     <String, dynamic>{
       'edges': instance.edges?.map((e) => e?.toJson()).toList(),
+      'pageInfo': instance.pageInfo.toJson(),
       '__typename': instance.$__typename,
     };
 
@@ -81,7 +84,6 @@ QueryIssueList$repository$issues$edges
               ? null
               : QueryIssueList$repository$issues$edges$node.fromJson(
                   json['node'] as Map<String, dynamic>),
-          cursor: json['cursor'] as String,
           $__typename: json['__typename'] as String,
         );
 
@@ -89,7 +91,6 @@ Map<String, dynamic> _$QueryIssueList$repository$issues$edgesToJson(
         QueryIssueList$repository$issues$edges instance) =>
     <String, dynamic>{
       'node': instance.node?.toJson(),
-      'cursor': instance.cursor,
       '__typename': instance.$__typename,
     };
 
@@ -113,5 +114,22 @@ Map<String, dynamic> _$QueryIssueList$repository$issues$edges$nodeToJson(
       'databaseId': instance.databaseId,
       'title': instance.title,
       'url': instance.url,
+      '__typename': instance.$__typename,
+    };
+
+QueryIssueList$repository$issues$pageInfo
+    _$QueryIssueList$repository$issues$pageInfoFromJson(
+            Map<String, dynamic> json) =>
+        QueryIssueList$repository$issues$pageInfo(
+          hasNextPage: json['hasNextPage'] as bool,
+          endCursor: json['endCursor'] as String?,
+          $__typename: json['__typename'] as String,
+        );
+
+Map<String, dynamic> _$QueryIssueList$repository$issues$pageInfoToJson(
+        QueryIssueList$repository$issues$pageInfo instance) =>
+    <String, dynamic>{
+      'hasNextPage': instance.hasNextPage,
+      'endCursor': instance.endCursor,
       '__typename': instance.$__typename,
     };

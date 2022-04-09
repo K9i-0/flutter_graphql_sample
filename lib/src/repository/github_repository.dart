@@ -11,7 +11,9 @@ class GithubRepository {
   const GithubRepository(this.read);
   final Reader read;
 
-  Future<QueryResult<QueryIssueList>> getIssues() {
+  Future<QueryResult<QueryIssueList>> getIssues({
+    String? nextCursor,
+  }) async {
     final client = read(graphQLClientProvider);
     return client.queryIssueList(
       OptionsQueryIssueList(
@@ -19,6 +21,7 @@ class GithubRepository {
           repositoryOwner: 'flutter',
           repositoryName: 'flutter',
           issuesFirst: 10,
+          issuesAfter: nextCursor,
         ),
       ),
     );

@@ -9,7 +9,10 @@ query IssueList($repositoryOwner: String!, $repositoryName: String!, $issuesFirs
           title
           url
         }
-        cursor
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
       }
     }
   }

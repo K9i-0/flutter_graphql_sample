@@ -13,27 +13,47 @@ class GithubIssueListScreenNotifier
   GithubIssueListScreenNotifier(Reader read)
       : repository = read(githubRepositoryProvider),
         super(
-          const GithubIssueListScreenState(id: 'github_issue_list_screen'),
+          const GithubIssueListScreenState(),
         ) {
-    init();
+    loadFirst();
   }
   final GithubRepository repository;
 
-  void init() {
-    repository.getIssues().then(print);
+  Future<void> loadFirst() async {
+    final result = await repository.getIssues();
+    final data = result.parsedData?.repository?.issues;
+    if (data != null) {
+      final pageInfo = data.pageInfo;
+      final issues = data.edges
+              ?.map((x) => x?.node)
+              .whereType<QueryIssueList$repository$issues$edges$node>()
+              .toList(growable: false) ??
+          List.empty(growable: false);
+
+      state = state.copyWith(
+        issues: issues,
+        hasMore: pageInfo.hasNextPage,
+        nextCursor: pageInfo.endCursor,
+      );
+    }
   }
 
-  Future<void> getFirst() async {
-    final result = await repository.getIssues();
-    final data = result.parsedData;
-    final issues = data?.repository?.issues.edges
-            ?.map((x) => x?.node)
-            .whereType<QueryIssueList$repository$issues$edges$node>()
-            .toList(growable: false) ??
-        List.empty(growable: false);
+  Future<void> loadNext() async {
+    final result = await repository.getIssues(nextCursor: state.nextCursor);
+    final data = result.parsedData?.repository?.issues;
+    if (data != null) {
+      final pageInfo = data.pageInfo;
+      final issues = data.edges
+              ?.map((x) => x?.node)
+              .whereType<QueryIssueList$repository$issues$edges$node>()
+              .toList(growable: false) ??
+          List.empty(growable: false);
 
-    state = state.copyWith(
-      issues: issues,
-    );
+      state = state.copyWith(
+        issues: [...state.issues, ...issues],
+        hasMore: pageInfo.hasNextPage,
+        nextCursor: pageInfo.endCursor,
+      );
+    }
   }
 }

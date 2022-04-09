@@ -212,7 +212,26 @@ const QUERY_ISSUE_LIST = const DocumentNode(definitions: [
                                     selectionSet: null)
                               ])),
                           FieldNode(
-                              name: NameNode(value: 'cursor'),
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: 'pageInfo'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                              name: NameNode(value: 'hasNextPage'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'endCursor'),
                               alias: null,
                               arguments: [],
                               directives: [],
@@ -402,7 +421,8 @@ extension UtilityExtensionQueryIssueList$repository
 
 @JsonSerializable(explicitToJson: true)
 class QueryIssueList$repository$issues extends JsonSerializable {
-  QueryIssueList$repository$issues({this.edges, required this.$__typename});
+  QueryIssueList$repository$issues(
+      {this.edges, required this.pageInfo, required this.$__typename});
 
   @override
   factory QueryIssueList$repository$issues.fromJson(
@@ -410,6 +430,8 @@ class QueryIssueList$repository$issues extends JsonSerializable {
       _$QueryIssueList$repository$issuesFromJson(json);
 
   final List<QueryIssueList$repository$issues$edges?>? edges;
+
+  final QueryIssueList$repository$issues$pageInfo pageInfo;
 
   @JsonKey(name: '__typename')
   final String $__typename;
@@ -419,9 +441,11 @@ class QueryIssueList$repository$issues extends JsonSerializable {
       _$QueryIssueList$repository$issuesToJson(this);
   int get hashCode {
     final l$edges = edges;
+    final l$pageInfo = pageInfo;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
       l$$__typename
     ]);
   }
@@ -444,6 +468,9 @@ class QueryIssueList$repository$issues extends JsonSerializable {
       return false;
     }
 
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -455,16 +482,18 @@ extension UtilityExtensionQueryIssueList$repository$issues
     on QueryIssueList$repository$issues {
   QueryIssueList$repository$issues copyWith(
           {List<QueryIssueList$repository$issues$edges?>? Function()? edges,
+          QueryIssueList$repository$issues$pageInfo? pageInfo,
           String? $__typename}) =>
       QueryIssueList$repository$issues(
           edges: edges == null ? this.edges : edges(),
+          pageInfo: pageInfo == null ? this.pageInfo : pageInfo,
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
 @JsonSerializable(explicitToJson: true)
 class QueryIssueList$repository$issues$edges extends JsonSerializable {
   QueryIssueList$repository$issues$edges(
-      {this.node, required this.cursor, required this.$__typename});
+      {this.node, required this.$__typename});
 
   @override
   factory QueryIssueList$repository$issues$edges.fromJson(
@@ -472,8 +501,6 @@ class QueryIssueList$repository$issues$edges extends JsonSerializable {
       _$QueryIssueList$repository$issues$edgesFromJson(json);
 
   final QueryIssueList$repository$issues$edges$node? node;
-
-  final String cursor;
 
   @JsonKey(name: '__typename')
   final String $__typename;
@@ -483,9 +510,8 @@ class QueryIssueList$repository$issues$edges extends JsonSerializable {
       _$QueryIssueList$repository$issues$edgesToJson(this);
   int get hashCode {
     final l$node = node;
-    final l$cursor = cursor;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$node, l$cursor, l$$__typename]);
+    return Object.hashAll([l$node, l$$__typename]);
   }
 
   @override
@@ -496,9 +522,6 @@ class QueryIssueList$repository$issues$edges extends JsonSerializable {
     final l$node = node;
     final lOther$node = other.node;
     if (l$node != lOther$node) return false;
-    final l$cursor = cursor;
-    final lOther$cursor = other.cursor;
-    if (l$cursor != lOther$cursor) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -510,11 +533,9 @@ extension UtilityExtensionQueryIssueList$repository$issues$edges
     on QueryIssueList$repository$issues$edges {
   QueryIssueList$repository$issues$edges copyWith(
           {QueryIssueList$repository$issues$edges$node? Function()? node,
-          String? cursor,
           String? $__typename}) =>
       QueryIssueList$repository$issues$edges(
           node: node == null ? this.node : node(),
-          cursor: cursor == null ? this.cursor : cursor,
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
@@ -602,5 +623,62 @@ extension UtilityExtensionQueryIssueList$repository$issues$edges$node
           databaseId: databaseId == null ? this.databaseId : databaseId(),
           title: title == null ? this.title : title,
           url: url == null ? this.url : url,
+          $__typename: $__typename == null ? this.$__typename : $__typename);
+}
+
+@JsonSerializable(explicitToJson: true)
+class QueryIssueList$repository$issues$pageInfo extends JsonSerializable {
+  QueryIssueList$repository$issues$pageInfo(
+      {required this.hasNextPage, this.endCursor, required this.$__typename});
+
+  @override
+  factory QueryIssueList$repository$issues$pageInfo.fromJson(
+          Map<String, dynamic> json) =>
+      _$QueryIssueList$repository$issues$pageInfoFromJson(json);
+
+  final bool hasNextPage;
+
+  final String? endCursor;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$QueryIssueList$repository$issues$pageInfoToJson(this);
+  int get hashCode {
+    final l$hasNextPage = hasNextPage;
+    final l$endCursor = endCursor;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$hasNextPage, l$endCursor, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is QueryIssueList$repository$issues$pageInfo) ||
+        runtimeType != other.runtimeType) return false;
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) return false;
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtensionQueryIssueList$repository$issues$pageInfo
+    on QueryIssueList$repository$issues$pageInfo {
+  QueryIssueList$repository$issues$pageInfo copyWith(
+          {bool? hasNextPage,
+          String? Function()? endCursor,
+          String? $__typename}) =>
+      QueryIssueList$repository$issues$pageInfo(
+          hasNextPage: hasNextPage == null ? this.hasNextPage : hasNextPage,
+          endCursor: endCursor == null ? this.endCursor : endCursor(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }

@@ -8,8 +8,9 @@ part 'github_issue_list_screen_state.freezed.dart';
 @freezed
 class GithubIssueListScreenState with _$GithubIssueListScreenState {
   const factory GithubIssueListScreenState({
-    required String id,
     @Default(<QueryIssueList$repository$issues$edges$node>[])
         List<QueryIssueList$repository$issues$edges$node> issues,
+    @Default(true) bool hasMore,
+    String? nextCursor,
   }) = _GithubIssueListScreenState;
 }

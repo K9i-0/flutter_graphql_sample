@@ -19,12 +19,14 @@ class _$GithubIssueListScreenStateTearOff {
   const _$GithubIssueListScreenStateTearOff();
 
   _GithubIssueListScreenState call(
-      {required String id,
-      List<QueryIssueList$repository$issues$edges$node> issues =
-          const <QueryIssueList$repository$issues$edges$node>[]}) {
+      {List<QueryIssueList$repository$issues$edges$node> issues =
+          const <QueryIssueList$repository$issues$edges$node>[],
+      bool hasMore = true,
+      String? nextCursor}) {
     return _GithubIssueListScreenState(
-      id: id,
       issues: issues,
+      hasMore: hasMore,
+      nextCursor: nextCursor,
     );
   }
 }
@@ -34,9 +36,10 @@ const $GithubIssueListScreenState = _$GithubIssueListScreenStateTearOff();
 
 /// @nodoc
 mixin _$GithubIssueListScreenState {
-  String get id => throw _privateConstructorUsedError;
   List<QueryIssueList$repository$issues$edges$node> get issues =>
       throw _privateConstructorUsedError;
+  bool get hasMore => throw _privateConstructorUsedError;
+  String? get nextCursor => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GithubIssueListScreenStateCopyWith<GithubIssueListScreenState>
@@ -49,7 +52,9 @@ abstract class $GithubIssueListScreenStateCopyWith<$Res> {
           $Res Function(GithubIssueListScreenState) then) =
       _$GithubIssueListScreenStateCopyWithImpl<$Res>;
   $Res call(
-      {String id, List<QueryIssueList$repository$issues$edges$node> issues});
+      {List<QueryIssueList$repository$issues$edges$node> issues,
+      bool hasMore,
+      String? nextCursor});
 }
 
 /// @nodoc
@@ -63,18 +68,23 @@ class _$GithubIssueListScreenStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
     Object? issues = freezed,
+    Object? hasMore = freezed,
+    Object? nextCursor = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       issues: issues == freezed
           ? _value.issues
           : issues // ignore: cast_nullable_to_non_nullable
               as List<QueryIssueList$repository$issues$edges$node>,
+      hasMore: hasMore == freezed
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      nextCursor: nextCursor == freezed
+          ? _value.nextCursor
+          : nextCursor // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -88,7 +98,9 @@ abstract class _$GithubIssueListScreenStateCopyWith<$Res>
       __$GithubIssueListScreenStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id, List<QueryIssueList$repository$issues$edges$node> issues});
+      {List<QueryIssueList$repository$issues$edges$node> issues,
+      bool hasMore,
+      String? nextCursor});
 }
 
 /// @nodoc
@@ -105,18 +117,23 @@ class __$GithubIssueListScreenStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
     Object? issues = freezed,
+    Object? hasMore = freezed,
+    Object? nextCursor = freezed,
   }) {
     return _then(_GithubIssueListScreenState(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       issues: issues == freezed
           ? _value.issues
           : issues // ignore: cast_nullable_to_non_nullable
               as List<QueryIssueList$repository$issues$edges$node>,
+      hasMore: hasMore == freezed
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      nextCursor: nextCursor == freezed
+          ? _value.nextCursor
+          : nextCursor // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -127,18 +144,22 @@ class _$_GithubIssueListScreenState
     with DiagnosticableTreeMixin
     implements _GithubIssueListScreenState {
   const _$_GithubIssueListScreenState(
-      {required this.id,
-      this.issues = const <QueryIssueList$repository$issues$edges$node>[]});
+      {this.issues = const <QueryIssueList$repository$issues$edges$node>[],
+      this.hasMore = true,
+      this.nextCursor});
 
-  @override
-  final String id;
   @JsonKey()
   @override
   final List<QueryIssueList$repository$issues$edges$node> issues;
+  @JsonKey()
+  @override
+  final bool hasMore;
+  @override
+  final String? nextCursor;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GithubIssueListScreenState(id: $id, issues: $issues)';
+    return 'GithubIssueListScreenState(issues: $issues, hasMore: $hasMore, nextCursor: $nextCursor)';
   }
 
   @override
@@ -146,8 +167,9 @@ class _$_GithubIssueListScreenState
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'GithubIssueListScreenState'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('issues', issues));
+      ..add(DiagnosticsProperty('issues', issues))
+      ..add(DiagnosticsProperty('hasMore', hasMore))
+      ..add(DiagnosticsProperty('nextCursor', nextCursor));
   }
 
   @override
@@ -155,15 +177,18 @@ class _$_GithubIssueListScreenState
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _GithubIssueListScreenState &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.issues, issues));
+            const DeepCollectionEquality().equals(other.issues, issues) &&
+            const DeepCollectionEquality().equals(other.hasMore, hasMore) &&
+            const DeepCollectionEquality()
+                .equals(other.nextCursor, nextCursor));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(issues));
+      const DeepCollectionEquality().hash(issues),
+      const DeepCollectionEquality().hash(hasMore),
+      const DeepCollectionEquality().hash(nextCursor));
 
   @JsonKey(ignore: true)
   @override
@@ -175,14 +200,16 @@ class _$_GithubIssueListScreenState
 abstract class _GithubIssueListScreenState
     implements GithubIssueListScreenState {
   const factory _GithubIssueListScreenState(
-          {required String id,
-          List<QueryIssueList$repository$issues$edges$node> issues}) =
-      _$_GithubIssueListScreenState;
+      {List<QueryIssueList$repository$issues$edges$node> issues,
+      bool hasMore,
+      String? nextCursor}) = _$_GithubIssueListScreenState;
 
   @override
-  String get id;
-  @override
   List<QueryIssueList$repository$issues$edges$node> get issues;
+  @override
+  bool get hasMore;
+  @override
+  String? get nextCursor;
   @override
   @JsonKey(ignore: true)
   _$GithubIssueListScreenStateCopyWith<_GithubIssueListScreenState>

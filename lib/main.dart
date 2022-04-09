@@ -13,20 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sharedPreferences = await SharedPreferences.getInstance();
-  await initHiveForFlutter();
-  final httpLink = HttpLink(
-    'https://api.github.com/graphql',
-  );
-  final authLink = AuthLink(
-    getToken: () async =>
-        'Bearer ${const String.fromEnvironment('GITHUB_TOKEN')}',
-  );
-  final link = authLink.concat(httpLink);
-  final graphQLClient = GraphQLClient(
-    link: link,
-    // The default store is the InMemoryStore, which does NOT persist to disk
-    cache: GraphQLCache(store: HiveStore()),
-  );
+  final graphQLClient = await initGraphQLClient();
 
   runApp(
     ProviderScope(
@@ -47,4 +34,22 @@ Future<void> main() async {
       ),
     ),
   );
+}
+
+Future<GraphQLClient> initGraphQLClient() async {
+  await initHiveForFlutter();
+  final httpLink = HttpLink(
+    'https://api.github.com/graphql',
+  );
+  final authLink = AuthLink(
+    getToken: () async =>
+        'Bearer ${const String.fromEnvironment('GITHUB_TOKEN')}',
+  );
+  final link = authLink.concat(httpLink);
+  final graphQLClient = GraphQLClient(
+    link: link,
+    // The default store is the InMemoryStore, which does NOT persist to disk
+    cache: GraphQLCache(store: HiveStore()),
+  );
+  return graphQLClient;
 }
