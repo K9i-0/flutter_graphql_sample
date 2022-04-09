@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_graphql_sample/src/graphql/issue_list/query/__generated__/issue_list.data.gql.dart';
 import 'package:flutter_graphql_sample/src/notifier/github_issue_list/github_issue_list_screen_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+part 'github_issue_list_list_item.dart';
 
 class GithubIssueListScreen extends HookConsumerWidget {
   const GithubIssueListScreen({Key? key}) : super(key: key);
@@ -18,7 +21,7 @@ class GithubIssueListScreen extends HookConsumerWidget {
         itemCount: state.issues.length,
         itemBuilder: (context, index) {
           final issue = state.issues[index];
-          return Text(issue.title);
+          return _ListItem(issue: issue);
         },
       ),
     );

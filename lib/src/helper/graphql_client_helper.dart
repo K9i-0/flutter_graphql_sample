@@ -13,6 +13,7 @@ Client createGraphqlClient() {
   final link = HttpLink(
     'https://api.github.com/graphql',
     defaultHeaders: {
+      'Authorization': 'Bearer ${const String.fromEnvironment('GITHUB_TOKEN')}',
     },
   );
 
