@@ -1,10 +1,10 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_graphql_sample/src/extension/extension.dart';
 import 'package:flutter_graphql_sample/src/local/flavor_provider.dart';
 import 'package:flutter_graphql_sample/src/notifier/theme_mode/theme_mode_notifier.dart';
 import 'package:flutter_graphql_sample/src/screen/settings/settings_screen.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
