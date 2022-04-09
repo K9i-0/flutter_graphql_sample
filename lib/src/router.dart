@@ -6,10 +6,15 @@ final _routerProvider = Provider(
     // observers: [
     //   FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
     // ],
+    initialLocation: GithubIssueListScreen.routeName,
     routes: [
       GoRoute(
         path: HomeScreen.routeName,
         builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: GithubIssueListScreen.routeName,
+        builder: (context, state) => const GithubIssueListScreen(),
       ),
       GoRoute(
         path: SettingsScreen.routeName,
