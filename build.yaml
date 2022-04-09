@@ -6,3 +6,8 @@ targets:
         generate_for:
           include:
             - lib/src/notifier/**/*state.dart
+      graphql_codegen:
+        options:
+          clients:
+            - graphql
+            - graphql_flutter

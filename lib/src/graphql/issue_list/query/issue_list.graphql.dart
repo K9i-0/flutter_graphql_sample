@@ -1,4 +1,7 @@
+import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
+import 'package:graphql/client.dart' as graphql;
+import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
 import 'package:json_annotation/json_annotation.dart';
 part 'issue_list.graphql.g.dart';
 
@@ -243,6 +246,114 @@ const QUERY_ISSUE_LIST = const DocumentNode(definitions: [
             selectionSet: null)
       ])),
 ]);
+QueryIssueList _parserFnQueryIssueList(Map<String, dynamic> data) =>
+    QueryIssueList.fromJson(data);
+
+class OptionsQueryIssueList extends graphql.QueryOptions<QueryIssueList> {
+  OptionsQueryIssueList(
+      {String? operationName,
+      required VariablesQueryIssueList variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      Duration? pollInterval,
+      graphql.Context? context})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            pollInterval: pollInterval,
+            context: context,
+            document: QUERY_ISSUE_LIST,
+            parserFn: _parserFnQueryIssueList);
+}
+
+class WatchOptionsQueryIssueList
+    extends graphql.WatchQueryOptions<QueryIssueList> {
+  WatchOptionsQueryIssueList(
+      {String? operationName,
+      required VariablesQueryIssueList variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: QUERY_ISSUE_LIST,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFnQueryIssueList);
+}
+
+class FetchMoreOptionsQueryIssueList extends graphql.FetchMoreOptions {
+  FetchMoreOptionsQueryIssueList(
+      {required graphql.UpdateQuery updateQuery,
+      required VariablesQueryIssueList variables})
+      : super(
+            updateQuery: updateQuery,
+            variables: variables.toJson(),
+            document: QUERY_ISSUE_LIST);
+}
+
+extension ClientExtensionQueryIssueList on graphql.GraphQLClient {
+  Future<graphql.QueryResult<QueryIssueList>> queryIssueList(
+          OptionsQueryIssueList options) async =>
+      await this.query(options);
+  graphql.ObservableQuery<QueryIssueList> watchQueryIssueList(
+          WatchOptionsQueryIssueList options) =>
+      this.watchQuery(options);
+  void writeQueryIssueList(
+          {required QueryIssueList data,
+          required VariablesQueryIssueList variables,
+          broadcast = true}) =>
+      this.writeQuery(
+          graphql.Request(
+              operation: graphql.Operation(document: QUERY_ISSUE_LIST),
+              variables: variables.toJson()),
+          data: data.toJson(),
+          broadcast: broadcast);
+  QueryIssueList? readQueryIssueList(
+      {required VariablesQueryIssueList variables, optimistic = true}) {
+    final result = this.readQuery(
+        graphql.Request(
+            operation: graphql.Operation(document: QUERY_ISSUE_LIST),
+            variables: variables.toJson()),
+        optimistic: optimistic);
+    return result == null ? null : QueryIssueList.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<QueryIssueList> useQueryIssueList(
+        OptionsQueryIssueList options) =>
+    graphql_flutter.useQuery(options);
+graphql.ObservableQuery<QueryIssueList> useWatchQueryIssueList(
+        WatchOptionsQueryIssueList options) =>
+    graphql_flutter.useWatchQuery(options);
+
+class QueryIssueListWidget extends graphql_flutter.Query<QueryIssueList> {
+  QueryIssueListWidget(
+      {widgets.Key? key,
+      required OptionsQueryIssueList options,
+      required graphql_flutter.QueryBuilder<QueryIssueList> builder})
+      : super(key: key, options: options, builder: builder);
+}
 
 @JsonSerializable(explicitToJson: true)
 class QueryIssueList$repository extends JsonSerializable {
