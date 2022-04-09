@@ -1,0 +1,16 @@
+query IssueList($repositoryOwner: String!, $repositoryName: String!, $issuesFirst: Int!, $issuesAfter: String) {
+  repository(owner: $repositoryOwner, name: $repositoryName) {
+    issues(first: $issuesFirst, after: $issuesAfter) {
+      edges {
+        node {
+          id
+          number
+          databaseId
+          title
+          url
+        }
+        cursor
+      }
+    }
+  }
+}
