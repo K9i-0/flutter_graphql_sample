@@ -20,8 +20,14 @@ class GithubIssueListScreenNotifier
   final GithubRepository repository;
 
   Future<void> loadFirst() async {
+    state = state.copyWith(
+      hasMore: true,
+      issues: List.empty(),
+      fetchMoreCursor: null,
+    );
     final result = await repository.getIssues();
     final data = result.parsedData?.repository?.issues;
+    print(result.source);
     if (data != null) {
       final pageInfo = data.pageInfo;
       final issues = data.edges
@@ -33,13 +39,14 @@ class GithubIssueListScreenNotifier
       state = state.copyWith(
         issues: issues,
         hasMore: pageInfo.hasNextPage,
-        nextCursor: pageInfo.endCursor,
+        fetchMoreCursor: pageInfo.endCursor,
       );
     }
   }
 
   Future<void> loadNext() async {
-    final result = await repository.getIssues(nextCursor: state.nextCursor);
+    final result =
+        await repository.getIssues(fetchMoreCursor: state.fetchMoreCursor);
     final data = result.parsedData?.repository?.issues;
     if (data != null) {
       final pageInfo = data.pageInfo;
@@ -52,7 +59,7 @@ class GithubIssueListScreenNotifier
       state = state.copyWith(
         issues: [...state.issues, ...issues],
         hasMore: pageInfo.hasNextPage,
-        nextCursor: pageInfo.endCursor,
+        fetchMoreCursor: pageInfo.endCursor,
       );
     }
   }

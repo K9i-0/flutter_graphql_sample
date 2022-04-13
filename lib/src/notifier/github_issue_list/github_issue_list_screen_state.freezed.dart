@@ -22,11 +22,11 @@ class _$GithubIssueListScreenStateTearOff {
       {List<QueryIssueList$repository$issues$edges$node> issues =
           const <QueryIssueList$repository$issues$edges$node>[],
       bool hasMore = true,
-      String? nextCursor}) {
+      String? fetchMoreCursor}) {
     return _GithubIssueListScreenState(
       issues: issues,
       hasMore: hasMore,
-      nextCursor: nextCursor,
+      fetchMoreCursor: fetchMoreCursor,
     );
   }
 }
@@ -39,7 +39,7 @@ mixin _$GithubIssueListScreenState {
   List<QueryIssueList$repository$issues$edges$node> get issues =>
       throw _privateConstructorUsedError;
   bool get hasMore => throw _privateConstructorUsedError;
-  String? get nextCursor => throw _privateConstructorUsedError;
+  String? get fetchMoreCursor => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GithubIssueListScreenStateCopyWith<GithubIssueListScreenState>
@@ -54,7 +54,7 @@ abstract class $GithubIssueListScreenStateCopyWith<$Res> {
   $Res call(
       {List<QueryIssueList$repository$issues$edges$node> issues,
       bool hasMore,
-      String? nextCursor});
+      String? fetchMoreCursor});
 }
 
 /// @nodoc
@@ -70,7 +70,7 @@ class _$GithubIssueListScreenStateCopyWithImpl<$Res>
   $Res call({
     Object? issues = freezed,
     Object? hasMore = freezed,
-    Object? nextCursor = freezed,
+    Object? fetchMoreCursor = freezed,
   }) {
     return _then(_value.copyWith(
       issues: issues == freezed
@@ -81,9 +81,9 @@ class _$GithubIssueListScreenStateCopyWithImpl<$Res>
           ? _value.hasMore
           : hasMore // ignore: cast_nullable_to_non_nullable
               as bool,
-      nextCursor: nextCursor == freezed
-          ? _value.nextCursor
-          : nextCursor // ignore: cast_nullable_to_non_nullable
+      fetchMoreCursor: fetchMoreCursor == freezed
+          ? _value.fetchMoreCursor
+          : fetchMoreCursor // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -100,7 +100,7 @@ abstract class _$GithubIssueListScreenStateCopyWith<$Res>
   $Res call(
       {List<QueryIssueList$repository$issues$edges$node> issues,
       bool hasMore,
-      String? nextCursor});
+      String? fetchMoreCursor});
 }
 
 /// @nodoc
@@ -119,7 +119,7 @@ class __$GithubIssueListScreenStateCopyWithImpl<$Res>
   $Res call({
     Object? issues = freezed,
     Object? hasMore = freezed,
-    Object? nextCursor = freezed,
+    Object? fetchMoreCursor = freezed,
   }) {
     return _then(_GithubIssueListScreenState(
       issues: issues == freezed
@@ -130,9 +130,9 @@ class __$GithubIssueListScreenStateCopyWithImpl<$Res>
           ? _value.hasMore
           : hasMore // ignore: cast_nullable_to_non_nullable
               as bool,
-      nextCursor: nextCursor == freezed
-          ? _value.nextCursor
-          : nextCursor // ignore: cast_nullable_to_non_nullable
+      fetchMoreCursor: fetchMoreCursor == freezed
+          ? _value.fetchMoreCursor
+          : fetchMoreCursor // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -146,7 +146,7 @@ class _$_GithubIssueListScreenState
   const _$_GithubIssueListScreenState(
       {this.issues = const <QueryIssueList$repository$issues$edges$node>[],
       this.hasMore = true,
-      this.nextCursor});
+      this.fetchMoreCursor});
 
   @JsonKey()
   @override
@@ -155,11 +155,11 @@ class _$_GithubIssueListScreenState
   @override
   final bool hasMore;
   @override
-  final String? nextCursor;
+  final String? fetchMoreCursor;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GithubIssueListScreenState(issues: $issues, hasMore: $hasMore, nextCursor: $nextCursor)';
+    return 'GithubIssueListScreenState(issues: $issues, hasMore: $hasMore, fetchMoreCursor: $fetchMoreCursor)';
   }
 
   @override
@@ -169,7 +169,7 @@ class _$_GithubIssueListScreenState
       ..add(DiagnosticsProperty('type', 'GithubIssueListScreenState'))
       ..add(DiagnosticsProperty('issues', issues))
       ..add(DiagnosticsProperty('hasMore', hasMore))
-      ..add(DiagnosticsProperty('nextCursor', nextCursor));
+      ..add(DiagnosticsProperty('fetchMoreCursor', fetchMoreCursor));
   }
 
   @override
@@ -180,7 +180,7 @@ class _$_GithubIssueListScreenState
             const DeepCollectionEquality().equals(other.issues, issues) &&
             const DeepCollectionEquality().equals(other.hasMore, hasMore) &&
             const DeepCollectionEquality()
-                .equals(other.nextCursor, nextCursor));
+                .equals(other.fetchMoreCursor, fetchMoreCursor));
   }
 
   @override
@@ -188,7 +188,7 @@ class _$_GithubIssueListScreenState
       runtimeType,
       const DeepCollectionEquality().hash(issues),
       const DeepCollectionEquality().hash(hasMore),
-      const DeepCollectionEquality().hash(nextCursor));
+      const DeepCollectionEquality().hash(fetchMoreCursor));
 
   @JsonKey(ignore: true)
   @override
@@ -202,14 +202,14 @@ abstract class _GithubIssueListScreenState
   const factory _GithubIssueListScreenState(
       {List<QueryIssueList$repository$issues$edges$node> issues,
       bool hasMore,
-      String? nextCursor}) = _$_GithubIssueListScreenState;
+      String? fetchMoreCursor}) = _$_GithubIssueListScreenState;
 
   @override
   List<QueryIssueList$repository$issues$edges$node> get issues;
   @override
   bool get hasMore;
   @override
-  String? get nextCursor;
+  String? get fetchMoreCursor;
   @override
   @JsonKey(ignore: true)
   _$GithubIssueListScreenStateCopyWith<_GithubIssueListScreenState>

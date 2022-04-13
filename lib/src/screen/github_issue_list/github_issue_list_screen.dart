@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_graphql_sample/src/graphql/graphql_client_provider.dart';
 import 'package:flutter_graphql_sample/src/graphql/issue_list/query/issue_list.graphql.dart';
 import 'package:flutter_graphql_sample/src/notifier/github_issue_list/github_issue_list_screen_notifier.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 

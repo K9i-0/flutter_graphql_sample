@@ -11,6 +11,6 @@ class GithubIssueListScreenState with _$GithubIssueListScreenState {
     @Default(<QueryIssueList$repository$issues$edges$node>[])
         List<QueryIssueList$repository$issues$edges$node> issues,
     @Default(true) bool hasMore,
-    String? nextCursor,
+    String? fetchMoreCursor,
   }) = _GithubIssueListScreenState;
 }
